@@ -18,9 +18,10 @@ brew install bash
 brew install bash-completion2
 
 # Install apps
-brew install google-chrome
-brew install atom
-brew install slack
+brew cask install google-chrome
+brew cask install atom
+brew cask install slack
+brew cask install iterm2
 
 # Fix errors with bash-completion
 if ! grep '/usr/local/bin/bash' /etc/shells; then
