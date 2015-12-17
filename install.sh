@@ -16,6 +16,7 @@ brew tap caskroom/versions
 brew install git
 brew install bash
 brew install bash-completion2
+brew install vim
 
 # Install apps
 brew cask install google-chrome
