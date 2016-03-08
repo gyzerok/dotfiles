@@ -13,7 +13,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'lambdatoast/elm.vim'
+Plugin 'elmcast/elm-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -24,8 +24,8 @@ filetype plugin indent on
 nnoremap <Space> <nop>
 let mapleader=" "
 nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>h :bp<CR>
-nnoremap <Leader>j :bn<CR>
+nnoremap <Leader>j :bp<CR>
+nnoremap <Leader>k :bn<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
 
