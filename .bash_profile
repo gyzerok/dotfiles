@@ -4,7 +4,7 @@ prepend-path() {
 }
 
 # Load the shell dotfiles, and then some:
-for file in `find $HOME/.dotfiles/system`; do
+for file in `find $HOME/.dotfiles/stuff`; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
