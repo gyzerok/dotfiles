@@ -1,5 +1,10 @@
+# Helper function to prepend stuff to PATH
+prepend-path() {
+    [ -d $1 ] && PATH="$1:$PATH"
+}
+
 # Load the shell dotfiles, and then some:
-for file in `find ~/.dotfiles/system`; do
+for file in `find $HOME/.dotfiles/system`; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -7,11 +12,12 @@ unset file;
 # Load NVM
 source $(brew --prefix nvm)/nvm.sh
 
-#source $(brew --prefix coreutils)/libexec/gnubin
+# We need to add coreutils to the path
+prepend-path "$(brew --prefix coreutils)/libexec/gnubin"
 
 # Add tab completion for many Bash commands
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  . $(brew --prefix)/share/bash-completion/bash_completion
+  source $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
 # Autocorrect typos in path names when using `cd`
