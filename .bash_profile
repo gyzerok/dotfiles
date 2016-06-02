@@ -10,6 +10,7 @@ done;
 unset file;
 
 # Load NVM
+export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
 
 # We need to add coreutils to the path
