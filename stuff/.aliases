@@ -30,6 +30,9 @@ alias localip="ipconfig getifaddr en0"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
+# Clean up docker images and containers
+alias docker-cleanup="docker rm $(docker ps -a -q) && docker rmi -f $(docker images -q -a -f dangling=true)"
+
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
