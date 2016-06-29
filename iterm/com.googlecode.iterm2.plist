@@ -721,13 +721,13 @@
 	<key>HotKeyTogglesWindow</key>
 	<false/>
 	<key>Hotkey</key>
-	<false/>
+	<true/>
 	<key>HotkeyChar</key>
-	<integer>0</integer>
+	<integer>167</integer>
 	<key>HotkeyCode</key>
-	<integer>0</integer>
+	<integer>10</integer>
 	<key>HotkeyModifiers</key>
-	<integer>0</integer>
+	<integer>256</integer>
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>JobName</key>
@@ -781,11 +781,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1141 1095 445 103 676 800 1920 1080 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>448 287 606 456 0 0 1440 877 </string>
+	<string>448 316 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>207 188 1067 503 0 0 1440 877 </string>
+	<string>233 134 1081 575 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1149 1329 570 451 676 800 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2249,6 +2249,8 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>459D89A2-BD32-4604-B32D-C85D54D59059</string>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>486576617.78440398</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -2321,7 +2323,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-06-09T17:50:56Z</date>
+	<date>2016-06-14T11:31:41Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Selected Text Color</key>
