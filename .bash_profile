@@ -24,7 +24,7 @@ fi
 # Run SSH Agent and add all keys
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
-  ssh-add
+  ssh-add $(find $HOME/.ssh/ -name '*_rsa')
 fi
 
 # Autocorrect typos in path names when using `cd`
