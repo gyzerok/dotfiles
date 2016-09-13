@@ -1,19 +1,35 @@
 #!/usr/bin/env bash
 
+
+
+###################################################
+###############       Prepare       ###############
+###################################################
+
+
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until installation has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 
 
 ###################################################
-############       Installations       ############
+############       Install tools       ############
 ###################################################
 
 
 
 # Make sure we are using latest Homebrew
 brew update
+brew cask update
 
-# Upgrade any already-installed formulae.
+# Upgrade any already-installed formulas.
 brew upgrade --all
 
 # Install GNU core utilities (those that come with OS X are outdated).
@@ -45,18 +61,41 @@ brew install nvm
 
 # Install apps
 brew cask install google-chrome
-brew cask install atom
 brew cask install slack
 brew cask install iterm2
 brew cask install caffeine
+brew cask install istat-menus
+
+# Install Atom with all starred packages
+brew cask install atom
+apm stars --install
 
 # Remove outdated versions from the cellar.
 brew cleanup
+brew cask cleanup
 
 
 
 ###################################################
-##########     System configuration     ##########
+############     Install dotfiles     #############
+###################################################
+
+
+
+DOTFILES_PATH=$HOME/.dotfiles
+
+# Cloning repo so it would be easy to keep in sync with repo later
+git clone git@github.com:gyzerok/dotfiles.git $DOTFILES_PATH
+
+# Make symlinks overwriting existing files if exists
+ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
+ln -sf $DOTFILES_PATH/.inputrc $HOME/.inputrc
+ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
+
+
+
+###################################################
+##########     System configuration     ###########
 ###################################################
 
 
@@ -183,7 +222,37 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
 # Kill affected applications
-for app in "cfprefsd" "Dock" "Finder"; do
+for app in "cfprefsd" "Dock" "Finder" "Terminal" "Safari"; do
 	killall "${app}" &> /dev/null
 done
+
+# Wait a bit before moving on...
+sleep 1
+
+# ...and then.
+echo "Installation complited!"
+echo "Some changes will not take effect until you reboot your machine."
+
+# See if the user wants to reboot.
+function reboot() {
+  read -p "Do you want to reboot your computer now? (y/N)" choice
+  case "$choice" in
+    y | Yes | yes ) echo "Yes"; exit;; # If y | yes, reboot
+    n | N | No | no) echo "No"; exit;; # If n | no, exit
+    * ) echo "Invalid answer. Enter \"y/yes\" or \"N/no\"" && return;;
+  esac
+}
+
+# Call on the function
+if [[ "Yes" == $(reboot) ]]
+then
+  echo "Rebooting."
+  sudo reboot
+  exit 0
+else
+  exit 1
+fi
