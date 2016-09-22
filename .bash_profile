@@ -23,3 +23,20 @@ fi
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
+dotfiles() {
+  if [ $# -lt 1 ]; then
+    dotfiles --help
+    return
+  fi
+
+  local COMMAND
+  COMMAND="${1-}"
+  shift
+
+  case $COMMAND in
+    'help' | '--help' )
+      echo 'This is no reserved for some stuff. Lets see if I can do something useful with it.'
+    ;;
+  esac
+}
