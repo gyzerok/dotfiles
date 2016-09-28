@@ -13,13 +13,13 @@
 	amend = commit --amend --reuse-message=HEAD
 
 	# Commit all changes
-	ca = !git add -A && git commit -av
+	ca = "!ca() { git add -A && git commit -am \"$1\"; }; ca"
 
 	# Interactive rebase with the all commits ahead origin/master
-	rb = "!r() { git rebase -i HEAD~\"$(git rev-list --count HEAD ^origin/master)\"; }; r"
+	rb = "!rb() { git rebase -i HEAD~\"$(git rev-list --count HEAD ^origin/master)\"; }; rb"
 
 	# Interactive rebase with the given number of latest commits
-	rbc = "!r() { git rebase -i HEAD~$1; }; r"
+	rbc = "!rbc() { git rebase -i HEAD~$1; }; rbc"
 
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
