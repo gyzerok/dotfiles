@@ -223,7 +223,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# To enable it back see http://apple.stackexchange.com/a/152065/207591
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Kill affected applications
 for app in "cfprefsd" "Dock" "Finder" "Terminal" "Safari"; do
