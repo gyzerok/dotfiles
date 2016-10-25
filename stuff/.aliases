@@ -38,5 +38,5 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+# Start screensaver (immediately lock feature should be enabled in order to lock at the same time)
+alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
