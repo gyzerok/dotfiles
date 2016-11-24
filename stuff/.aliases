@@ -39,4 +39,4 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias map="xargs -n1"
 
 # Start screensaver (immediately lock feature should be enabled in order to lock at the same time)
-alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+# alias afk="open -a ScreenSaverEngine"
