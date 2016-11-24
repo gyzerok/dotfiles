@@ -62,7 +62,7 @@ brew install nvm
 # Install apps
 brew cask install google-chrome
 brew cask install slack
-brew cask install iterm2
+brew cask install hyper
 brew cask install caffeine
 brew cask install istat-menus
 
@@ -91,6 +91,7 @@ git clone git@github.com:gyzerok/dotfiles.git $DOTFILES_PATH
 ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
 ln -sf $DOTFILES_PATH/.inputrc $HOME/.inputrc
 ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
+ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 
 
 
