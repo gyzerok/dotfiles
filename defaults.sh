@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-
+set -e
 
 main() {
   configure_system
   configure_dock
   configure_finder
 }
+
 
 function configure_system() {
   # Disable the sound effects on boot
@@ -26,6 +27,7 @@ function configure_system() {
   # Prevent Photos from opening automatically when devices are plugged in
   defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 }
+
 
 function configure_dock() {
   quit "Dock"
@@ -73,6 +75,7 @@ function configure_dock() {
   defaults write com.apple.dock wvous-bl-modifier -int 0
   open "Dock"
 }
+
 
 function configure_finder() {
   # expand save panel by default
@@ -132,10 +135,12 @@ function configure_finder() {
     Privileges -bool true
 }
 
+
 function quit() {
   app=$1
   killall "$app" > /dev/null 2>&1
 }
+
 
 function open() {
   app=$1

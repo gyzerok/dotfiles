@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+set -e
+
+DOTFILES_PATH=$HOME/.dotfiles
+
 
 main() {
   ask_for_sudo
@@ -8,7 +12,6 @@ main() {
   install_fish
 }
 
-DOTFILES_PATH=$HOME/.dotfiles
 
 function ask_for_sudo() {
   # Ask for the administrator password upfront
