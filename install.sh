@@ -16,7 +16,7 @@ main() {
 
 function ask_for_sudo() {
   # Ask for the administrator password upfront
-  sudo --validate
+  sudo -v
 
   # Keep-alive: update existing `sudo` time stamp until installation has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -62,7 +62,7 @@ function install_packages() {
 
 function install_dotfiles() {
   # Cloning repo so it would be easy to keep in sync with repo later
-  git clone git@github.com:gyzerok/dotfiles.git $DOTFILES_PATH
+  git clone https://github.com/gyzerok/dotfiles.git $DOTFILES_PATH
 
   # Make symlinks overwriting existing files if exists
   # ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
