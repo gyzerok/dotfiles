@@ -19,7 +19,8 @@ function ask_for_sudo() {
 
 
 function install_homebrew() {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  # Unattended installation as described in https://github.com/Homebrew/legacy-homebrew/issues/46779#issuecomment-162819088
+  echo | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 
