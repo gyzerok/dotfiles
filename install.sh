@@ -8,6 +8,7 @@ main() {
   install_fish
 }
 
+DOTFILES_PATH=$HOME/.dotfiles
 
 function ask_for_sudo() {
   # Ask for the administrator password upfront
@@ -57,16 +58,14 @@ function install_packages() {
 
 
 function install_dotfiles() {
-  DOTFILES_PATH=$HOME/.dotfiles
-
   # Cloning repo so it would be easy to keep in sync with repo later
   git clone git@github.com:gyzerok/dotfiles.git $DOTFILES_PATH
 
   # Make symlinks overwriting existing files if exists
   # ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
   # ln -sf $DOTFILES_PATH/.inputrc $HOME/.inputrc
-  # ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
-  # ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
+  ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
+  ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 }
 
 
@@ -75,5 +74,11 @@ function install_fish() {
   brew install fish
   sudo chsh -s /usr/local/bin/fish "$user"
 }
+
+
+configure_macos() {
+  bash $DOTFILES_PATH/defaults.sh
+}
+
 
 main "$@"
