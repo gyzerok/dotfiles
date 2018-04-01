@@ -9,6 +9,7 @@ main() {
   install_homebrew
   install_packages
   install_dotfiles
+  configure_macos
   install_fish
 }
 
@@ -31,7 +32,6 @@ function install_homebrew() {
 function install_packages() {
   # Make sure we are using latest Homebrew
   brew update
-  brew cask update
 
   # Install GNU core utilities (those that come with OS X are outdated).
   # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -79,7 +79,7 @@ function install_fish() {
 }
 
 
-configure_macos() {
+function configure_macos() {
   bash $DOTFILES_PATH/defaults.sh
 }
 

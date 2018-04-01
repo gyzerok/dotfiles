@@ -148,3 +148,6 @@ function open() {
 tell application "$app" to activate
 EOM
 }
+
+
+main "$@"
