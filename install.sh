@@ -72,15 +72,15 @@ function install_dotfiles() {
 }
 
 
-function install_fish() {
-  user=$(whoami)
-  brew install fish
-  sudo chsh -s /usr/local/bin/fish "$user"
+function configure_macos() {
+  bash $DOTFILES_PATH/defaults.sh
 }
 
 
-function configure_macos() {
-  bash $DOTFILES_PATH/defaults.sh
+function install_fish() {
+  brew install fish
+  echo /usr/local/bin/fish | sudo tee -a /etc/shells > /dev/null
+  sudo chsh -s /usr/local/bin/fish
 }
 
 
