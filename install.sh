@@ -67,7 +67,9 @@ function install_dotfiles() {
   git clone https://github.com/gyzerok/dotfiles.git $DOTFILES_PATH
 
   # Make symlinks overwriting existing files if exists
+  mkdir -p $HOME/.config
   ln -sf $DOTFILES_PATH/fish $HOME/.config/fish
+
   ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
   ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 }
