@@ -1,0 +1,1 @@
+/Users/fnez/.config/fisherman/bass/functions/bass.fish
