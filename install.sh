@@ -49,10 +49,12 @@ function install_packages() {
 
   # Install apps
   brew cask install firefox
+  brew cask install 1password
   brew cask install slack
   brew cask install hyper
   brew cask install caffeine
   brew cask install istat-menus
+  brew cask install tunnelblick
 
   # Remove outdated versions from the cellar.
   brew cleanup
@@ -65,8 +67,7 @@ function install_dotfiles() {
   git clone https://github.com/gyzerok/dotfiles.git $DOTFILES_PATH
 
   # Make symlinks overwriting existing files if exists
-  # ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
-  # ln -sf $DOTFILES_PATH/.inputrc $HOME/.inputrc
+  ln -sf $DOTFILES_PATH/fish $HOME/.config/fish
   ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
   ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 }
