@@ -83,7 +83,7 @@ function configure_macos() {
 function install_fish() {
   brew install fish
   echo /usr/local/bin/fish | sudo tee -a /etc/shells > /dev/null
-  sudo chsh -s /usr/local/bin/fish
+  sudo chsh -s /usr/local/bin/fish $(whoami)
 }
 
 
