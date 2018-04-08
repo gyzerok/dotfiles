@@ -48,10 +48,11 @@ function install_packages() {
   brew install nvm
 
   # Install apps
-  brew cask install firefox
   brew cask install 1password
-  brew cask install slack
+  brew cask install firefox
+  brew cask install visual-studio-code
   brew cask install hyper
+  brew cask install slack
   brew cask install caffeine
   brew cask install istat-menus
   brew cask install tunnelblick
@@ -70,6 +71,7 @@ function install_dotfiles() {
   mkdir -p $HOME/.config
   ln -sf $DOTFILES_PATH/fish $HOME/.config/fish
 
+  ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
   ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
   ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 }
