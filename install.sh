@@ -48,7 +48,6 @@ function install_packages() {
   brew install nvm
 
   # Install apps
-  brew cask install 1password
   brew cask install firefox
   brew cask install visual-studio-code
   brew cask install hyper
