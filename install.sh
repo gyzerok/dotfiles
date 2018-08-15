@@ -48,7 +48,7 @@ function install_packages() {
   brew install nvm
 
   # Install apps
-  brew cask install firefox
+  # brew cask install firefox
   brew cask install visual-studio-code
   brew cask install hyper
   brew cask install slack
