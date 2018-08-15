@@ -10,7 +10,7 @@ main() {
   install_packages
   install_dotfiles
   configure_macos
-  install_fish
+  install_bash
 }
 
 
@@ -66,11 +66,8 @@ function install_dotfiles() {
   # Cloning repo so it would be easy to keep in sync with repo later
   git clone https://github.com/gyzerok/dotfiles.git $DOTFILES_PATH
 
-  # Make symlinks overwriting existing files if exists
-  mkdir -p $HOME/.config
-  ln -sf $DOTFILES_PATH/fish $HOME/.config/fish
-
   ln -sf $DOTFILES_PATH/.bash_profile $HOME/.bash_profile
+  ln -sf $DOTFILES_PATH/.inputrc $HOME/.inputrc
   ln -sf $DOTFILES_PATH/.gitconfig $HOME/.gitconfig
   ln -sf $DOTFILES_PATH/.hyper.js $HOME/.hyper.js
 }
@@ -81,10 +78,14 @@ function configure_macos() {
 }
 
 
-function install_fish() {
-  brew install fish
-  echo /usr/local/bin/fish | sudo tee -a /etc/shells > /dev/null
-  sudo chsh -s /usr/local/bin/fish $(whoami)
+function install_bash() {
+  brew install bash
+  brew install bash-completion@2
+
+  if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+    echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+    chsh -s /usr/local/bin/bash;
+  fi
 }
 
 
