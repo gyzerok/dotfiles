@@ -54,7 +54,7 @@ function install_packages() {
   brew cask install slack
   brew cask install caffeine
   brew cask install istat-menus
-  brew cask install tunnelblick
+  # brew cask install tunnelblick
 
   # Remove outdated versions from the cellar.
   brew cleanup
