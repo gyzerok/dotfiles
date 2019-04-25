@@ -5,7 +5,8 @@ DOTFILES_PATH=$HOME/.dotfiles
 
 
 main() {
-  ask_for_sudo
+  echo "Currently not working version!"
+  # ask_for_sudo
   # install_homebrew
   # install_packages
   # install_dotfiles
