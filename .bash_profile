@@ -1,18 +1,24 @@
+#!/usr/bin/env bash
+
 # This is needed for tools which work with bash
 # to find node and npm (for example Visual Studio Code)
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="${HOME}/.nvm"
+source "$(brew --prefix nvm)/nvm.sh"
 
 # Load the shell dotfiles, and then some:
-for file in `find $HOME/.dotfiles/stuff`; do
+while read -r file; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
+done <<< "$(find "${HOME}/.dotfiles/stuff")"
 unset file;
 
 # Add tab completion for many Bash commands
-if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  source $(brew --prefix)/share/bash-completion/bash_completion
-fi
+if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+	# Ensure existing Homebrew v1 completions continue to work
+	export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+	source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
 
-# Autocorrect typos in path names when using `cd`
+# Autocorrect typos in path names when using cd 
 shopt -s cdspell;
