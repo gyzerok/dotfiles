@@ -6,11 +6,11 @@ DOTFILES_PATH=$HOME/.dotfiles
 
 main() {
   ask_for_sudo
-  install_homebrew
-  install_packages
-  install_dotfiles
-  configure_macos
-  install_bash
+  # install_homebrew
+  # install_packages
+  # install_dotfiles
+  # configure_macos
+  # install_bash
 }
 
 
