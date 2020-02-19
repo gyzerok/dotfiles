@@ -14,6 +14,7 @@ brew update
 brew install git
 brew install nvm
 brew install shellcheck
+brew install python
 
 # Install apps
 brew cask install firefox
@@ -48,6 +49,7 @@ ln -sf "${DOTFILES_PATH}/.bash_profile" "${HOME}/.bash_profile"
 ln -sf "${DOTFILES_PATH}/.inputrc" "${HOME}/.inputrc"
 ln -sf "${DOTFILES_PATH}/.gitconfig" "${HOME}/.gitconfig"
 ln -sf "${DOTFILES_PATH}/.hyper.js" "${HOME}/.hyper.js"
+ln -sf "${DOTFILES_PATH}/.vimrc" "${HOME}/.vimrc"
 
 
 ###############################################################################

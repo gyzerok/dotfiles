@@ -12,7 +12,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'jnurmine/zenburn'
 Plug 'morhetz/gruvbox'
 Plug 'hecal3/vim-leader-guide'
 if has('nvim')
