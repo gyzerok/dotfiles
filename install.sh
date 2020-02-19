@@ -15,6 +15,7 @@ brew install git
 brew install nvm
 brew install shellcheck
 brew install python
+brew install fd
 
 # Install apps
 brew cask install firefox
