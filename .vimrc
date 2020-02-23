@@ -38,6 +38,7 @@ Plug 'tpope/vim-commentary'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 "" Syntax
 Plug 'andys8/vim-elm-syntax'
