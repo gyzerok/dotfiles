@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-DOTFILES_PATH=$HOME/.dotfiles
-
 
 ###############################################################################
 # Install packages                                                            #
@@ -43,12 +41,15 @@ brew cleanup
 # Install dotfiles                                                            #
 ###############################################################################
 
+DOTFILES_PATH=$HOME/.dotfiles
+
 # Cloning repo so it would be easy to keep in sync with repo later
 git clone https://github.com/gyzerok/dotfiles.git "${DOTFILES_PATH}"
 
 ln -sf "${DOTFILES_PATH}/.bash_profile" "${HOME}/.bash_profile"
 ln -sf "${DOTFILES_PATH}/.inputrc" "${HOME}/.inputrc"
 ln -sf "${DOTFILES_PATH}/.gitconfig" "${HOME}/.gitconfig"
+ln -sf "${DOTFILES_PATH}/.gitignore" "${HOME}/.gitignore"
 ln -sf "${DOTFILES_PATH}/.hyper.js" "${HOME}/.hyper.js"
 ln -sf "${DOTFILES_PATH}/.vimrc" "${HOME}/.vimrc"
 
