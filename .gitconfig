@@ -2,6 +2,9 @@
 	name = Fedor Nezhivoi
 	email = gyzerok@users.noreply.github.com
 
+[includeIf "gitdir:~/Code/work/"]
+  path = ~/Code/work/.gitconfig
+
 [alias]
 
 	# Show verbose output about tags, branches or remotes
