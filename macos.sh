@@ -17,9 +17,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Change DNS servers for all network interfaces to use 1.1.1.1
 # use "networksetup -listallnetworkservices" to see the list
-networksetup -setdnsservers 'USB 10/100/1000 LAN' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
-networksetup -setdnsservers 'Wi-Fi' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
-networksetup -setdnsservers 'iPhone USB' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+# networksetup -setdnsservers 'USB 10/100/1000 LAN' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+# networksetup -setdnsservers 'Wi-Fi' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+# networksetup -setdnsservers 'iPhone USB' 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
 
 
 ###############################################################################
@@ -65,7 +65,6 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
 
 
 ###############################################################################
@@ -232,6 +231,48 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 
 ###############################################################################
+# Energy saving                                                               #
+###############################################################################
+
+# Enable lid wakeup
+sudo pmset -a lidwake 1
+
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
+
+# Restart automatically if the computer freezes
+sudo systemsetup -setrestartfreeze on
+
+# Sleep the display after 15 minutes
+sudo pmset -a displaysleep 15
+
+# Disable machine sleep while charging
+sudo pmset -c sleep 0
+
+# Set machine sleep to 5 minutes on battery
+sudo pmset -b sleep 5
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
+
+# Never go into computer sleep mode
+sudo systemsetup -setcomputersleep Off > /dev/null
+
+# Hibernation mode
+# 0: Disable hibernation (speeds up entering sleep mode)
+# 3: Copy RAM to disk so the system state can still be restored in case of a
+#    power failure.
+sudo pmset -a hibernatemode 0
+
+# Remove the sleep image file to save disk space
+sudo rm /private/var/vm/sleepimage
+# Create a zero-byte file instead…
+sudo touch /private/var/vm/sleepimage
+# …and make sure it can’t be rewritten
+sudo chflags uchg /private/var/vm/sleepimage
+
+
+###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
 
@@ -293,10 +334,8 @@ for app in "Activity Monitor" \
 	"Photos" \
 	"Safari" \
 	"SizeUp" \
-	"Spectacle" \
 	"SystemUIServer" \
-	"Terminal" \
-	"Transmission"; do
+	"Terminal"; do
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
