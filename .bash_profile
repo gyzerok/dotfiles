@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# GPG key
+export GPG_TTY=$(tty)
+
 # This is needed for tools which work with bash
 # to find node and npm (for example Visual Studio Code)
 export NVM_DIR="${HOME}/.nvm"
