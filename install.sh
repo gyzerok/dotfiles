@@ -11,18 +11,15 @@ brew update
 # Install useful binaries
 brew install git
 brew install nvm
-brew install shellcheck
-brew install python
-brew install fd
 
 # Install apps
-brew cask install firefox
-brew cask install visual-studio-code
-brew cask install hyper
-brew cask install slack
-brew cask install caffeine
-brew cask install istat-menus
-brew cask install tunnelblick
+# brew cask install firefox
+# brew cask install visual-studio-code
+# brew cask install hyper
+# brew cask install slack
+# brew cask install caffeine
+# brew cask install istat-menus
+# brew cask install tunnelblick
 
 # Install newer version of Bash
 brew install bash
