@@ -3,7 +3,7 @@
 	email = gyzerok@users.noreply.github.com
 
 [includeIf "gitdir:~/Code/work/"]
-  path = ~/Code/work/.gitconfig
+  path = ~/.gitconfig-work
 
 [alias]
 	# Show verbose output about tags, branches or remotes
