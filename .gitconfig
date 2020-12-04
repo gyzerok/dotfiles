@@ -100,6 +100,9 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
+[pull]
+	rebase = true
+
 [push]
 	default = current
 	# Make `git push` push relevant annotated tags when pushing branches out.
@@ -110,3 +113,9 @@
 
 [http]
 	postBuffer = 157286400
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
