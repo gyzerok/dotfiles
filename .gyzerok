@@ -22,9 +22,6 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
 alias ttl="sudo sysctl -w net.inet.ip.ttl=65"
 
 ###############################################################################
@@ -97,18 +94,6 @@ set convert-meta off
 # Misc                                                                        #
 ###############################################################################
 
-# This is needed for tools which work with bash
-# to find node and npm (for example Visual Studio Code)
-export NVM_DIR="${HOME}/.nvm"
-if test -e /usr/local/opt/nvm
-	source "/usr/local/opt/nvm/nvm.sh"
-end
-
-# Use GNU core utils on macOS if available.
-if test -e /usr/local/opt/coreutils
-  set PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-end
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
@@ -118,14 +103,25 @@ shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# Add tab completion for many Bash commands
-if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
-	# Ensure existing Homebrew v1 completions continue to work
-	export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
-	source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
-elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion;
-fi;
-
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+if [ "$(uname)" == "Darwin" ]; then
+	# This is needed for tools which work with bash
+	# to find node and npm (for example Visual Studio Code)
+	export NVM_DIR="${HOME}/.nvm"
+	source "$(brew --prefix nvm)/nvm.sh"
+
+	# Use GNU core utils on macOS if available.
+	PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+	# Add tab completion for many Bash commands
+	if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+		# Ensure existing Homebrew v1 completions continue to work
+		export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+		source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+	elif [ -f /etc/bash_completion ]; then
+		source /etc/bash_completion;
+	fi
+fi
+
