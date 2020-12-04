@@ -113,7 +113,7 @@ shopt -s cdspell;
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
-if [ "$(uname)" == "Darwin" ]; then
+if which brew &> /dev/null; then
 	# This is needed for tools which work with bash
 	# to find node and npm (for example Visual Studio Code)
 	export NVM_DIR="${HOME}/.nvm"
@@ -123,7 +123,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 	# Add tab completion for many Bash commands
-	if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+	if [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
 		# Ensure existing Homebrew v1 completions continue to work
 		export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
 		source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
