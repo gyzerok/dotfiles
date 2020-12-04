@@ -28,15 +28,12 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
 # Install GnuPG to enable PGP-signing commits.
 # brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install grep
 brew install openssh
+brew install wget --with-iri
 
 # Install other useful binaries.
 brew install git
@@ -48,6 +45,7 @@ brew cask install firefox
 brew cask install visual-studio-code
 brew cask install hyper
 brew cask install caffeine
+brew cask install telegram
 
 # Remove outdated versions from the cellar.
 brew cleanup

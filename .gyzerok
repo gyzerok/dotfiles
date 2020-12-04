@@ -31,10 +31,6 @@ alias ttl="sudo sysctl -w net.inet.ip.ttl=65"
 # Exports                                                                     #
 ###############################################################################
 
-# Use GNU core utils on macOS if available.
-if test -e /usr/local/opt/coreutils
-  set PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-end
 
 # Enable persistent REPL history for `node`.
 export NODE_REPL_HISTORY=~/.node_history;
@@ -104,7 +100,14 @@ set convert-meta off
 # This is needed for tools which work with bash
 # to find node and npm (for example Visual Studio Code)
 export NVM_DIR="${HOME}/.nvm"
-source "$(brew --prefix nvm)/nvm.sh"
+if test -e /usr/local/opt/nvm
+	source "/usr/local/opt/nvm/nvm.sh"
+end
+
+# Use GNU core utils on macOS if available.
+if test -e /usr/local/opt/coreutils
+  set PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+end
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
