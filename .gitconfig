@@ -11,9 +11,6 @@
 	branches = branch -a
 	remotes = remote -v
 
-	# Log for Spice Program
-	spice = log --pretty=\"%h - %s\"
-
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
@@ -30,7 +27,7 @@
 	rbi = "!rbi() { git rebase -i HEAD~\"$(git rev-list --count HEAD ^$1)\"; }; rbi"
 
 	# Interactive rebase with the given number of latest commits
-	rbc = "!rbc() { git rebase -i HEAD~$1; }; rbc"
+	rbc = "!rb() { git rebase -i HEAD~$1; }; rb"
 
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
