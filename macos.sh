@@ -167,7 +167,7 @@ defaults write com.apple.BezelServices kDimTime -int 300
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Moscow" > /dev/null
+# sudo systemsetup -settimezone "Europe/Moscow" > /dev/null
 
 ###############################################################################
 # Energy saving                                                               #
