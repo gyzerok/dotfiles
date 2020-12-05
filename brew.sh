@@ -16,28 +16,28 @@ brew upgrade
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
-ln -s "$(brew --prefix)/bin/gsha256sum" "$(brew --prefix)/bin/sha256sum"
-
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion2
+# Install a modern version of ZSH.
+brew install zsh
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Switch to using brew-installed bash as default shell
-if ! grep -Fq "$(brew --prefix)/bin/bash" /etc/shells; then
-  echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "$(brew --prefix)/bin/bash";
+# Switch to using brew-installed zsh as default shell
+if ! grep -Fq "$(brew --prefix)/bin/zsh" /etc/shells; then
+  echo "$(brew --prefix)/bin/zsh" | sudo tee -a /etc/shells;
+  chsh -s "$(brew --prefix)/bin/zsh";
 fi;
 
 # Install more recent versions of some macOS tools.
 brew install wget
 
 # Install other useful binaries.
+brew install nvm
 brew install git
 brew install git-lfs
-brew install nvm
+git lfs install
 
 # Install apps only for macOS as I don't need them on Linux VMs.
 if [ "$(uname)" == "Darwin" ]; then
