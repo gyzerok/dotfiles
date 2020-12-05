@@ -1,5 +1,3 @@
 # dotfiles
 
-```bash
-eval "$(curl -fsSL https://raw.githubusercontent.com/gyzerok/dotfiles/master/install.sh)"
-```
+My personal collection of dotfiles. I prefer to keep it very lightweight.

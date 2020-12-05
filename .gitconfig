@@ -21,13 +21,13 @@
 	co = "!co() { git checkout $1; }; co"
 
 	# Create new branch and checkout
-	cob = "!cob() { git checkout -b $1; }; cob"
+	cb = "!cb() { git checkout -b $1; }; cb"
 
 	# Interactive rebase with the all commits ahead origin/master
-	rbi = "!rbi() { git rebase -i HEAD~\"$(git rev-list --count HEAD ^$1)\"; }; rbi"
+	rb = "!rb() { git rebase -i HEAD~\"$(git rev-list --count HEAD ^$1)\"; }; rb"
 
 	# Interactive rebase with the given number of latest commits
-	rbc = "!rb() { git rebase -i HEAD~$1; }; rb"
+	rn = "!rn() { git rebase -i HEAD~$1; }; rn"
 
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’

@@ -35,9 +35,9 @@ fi;
 brew install wget
 
 # Install other useful binaries.
+brew install nvm
 brew install git
 brew install git-lfs
-brew install nvm
 
 # Install apps only for macOS as I don't need them on Linux VMs.
 if [ "$(uname)" == "Darwin" ]; then
