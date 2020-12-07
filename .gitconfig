@@ -2,9 +2,6 @@
 	name = Fedor Nezhivoi
 	email = gyzerok@users.noreply.github.com
 
-[includeIf "gitdir:~/Code/work/"]
-  path = ~/.gitconfig-work
-
 [alias]
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
@@ -119,3 +116,9 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
+[include]
+	path = ~/.gitconfig-local
+
+[includeIf "gitdir:~/Code/work/"]
+  path = ~/.gitconfig-work
