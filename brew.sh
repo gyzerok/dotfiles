@@ -47,6 +47,7 @@ if [ "$(uname)" == "Darwin" ]; then
   brew install --cask hyper
   brew install --cask caffeine
   brew install --cask telegram
+  brew install --cask 1password
 
   # Install GnuPG to enable PGP-signing commits.
   # Doing it last as it might require sudo password.

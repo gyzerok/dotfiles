@@ -94,3 +94,5 @@ if which brew &> /dev/null; then
 	fi
 fi
 
+source "$HOME/.cargo/env"
+
