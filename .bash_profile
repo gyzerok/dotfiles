@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Load the shell dotfiles, and then some:
+eval "$(starship init bash)"
+
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{bash_prompt,extra}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
+if [ -f ~/.extra ]; then
+	source ~/.extra;
+fi
 
 ###############################################################################
 # Aliases                                                                     #
