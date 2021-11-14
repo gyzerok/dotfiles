@@ -42,6 +42,11 @@ brew install git-lfs
 # Install nice prompt
 brew install starship
 
+# Insall NeoVim and related things
+brew install neovim
+brew install ripgrep
+brew install fd
+
 # Install apps only for macOS as I don't need them on Linux VMs.
 if [ "$(uname)" == "Darwin" ]; then
   brew tap homebrew/cask-versions
