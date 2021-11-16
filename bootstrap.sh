@@ -2,6 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
+git remote set-url origin git@github.com:gyzerok/dotfiles.git
 git pull -r origin master;
 
 function doIt() {

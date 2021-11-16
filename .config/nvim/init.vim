@@ -1,6 +1,6 @@
 "====== PLUGINS
 
-call plug#begin()
+call plug#begin('~/.nvim/plugged')
 
 " Prerequesite for other plugins
 Plug 'nvim-lua/plenary.nvim'
@@ -28,13 +28,43 @@ call plug#end()
 
 "====== MISC
 
+" make vim more useful
+set nocompatible
+" enable line numbers
 set number
+" enhance command-line completion
+set wildmenu
+" highlight current line
+set cursorline
 set autoindent
 set smarttab
+" allow backspace in insert mode
+set backspace=indent,eol,start
+" make tabs as wide as 4 spaces
 set tabstop=4
+" set amount of characters used for indentation
 set shiftwidth=4
-set softtabstop=4
+" insert spaces whenever tab is pressed
 set expandtab
+" highlight searches
+set hlsearch
+" highlight dynamically as pattern is typed
+set incsearch
+" use global substitute by default
+set gdefault
+" use utf-8 without bom
+set encoding=utf-8 nobomb
+" dont add empty newlines at the end of files
+set binary
+set noeol
+" start scrolling three lines before the horizontal window border
+set scrolloff=3
+" centralize backups, swapfiles and undo history
+set backupdir=~/.nvim/backups
+set directory=~/.nvim/swaps
+if exists("&undodir")
+    set undodir=~/.nvim/undo
+endif
 
 if (has("termguicolors"))
     set termguicolors
