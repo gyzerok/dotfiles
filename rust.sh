@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install Rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -6,6 +8,8 @@ rustup component add clippy
 rustup component add rustfmt
 
 # Install various cargo extensions
+cargo install cargo-update
 cargo install cargo-edit
 cargo install cargo-audit
 cargo install cargo-expand
+cargo install cargo-outdated
