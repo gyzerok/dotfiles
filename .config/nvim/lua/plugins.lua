@@ -74,9 +74,6 @@ return require('packer').startup(function(use)
       -- avoid showing extra messages when using completion
       vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
       local cmp = require('cmp')
       cmp.setup({
           mapping = {
@@ -87,10 +84,13 @@ return require('packer').startup(function(use)
                 select = true,
               })
           },
-          sources = {
+          sources = cmp.config.sources({
               { name = 'nvim_lsp' },
-          },
+          }),
       })
+
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
