@@ -50,11 +50,10 @@ brew install fd
 # Install apps only for macOS as I don't need them on Linux VMs.
 if [ "$(uname)" == "Darwin" ]; then
   brew tap homebrew/cask-versions
-  brew install --cask firefox-developer-edition
+  brew install --cask firefox
   brew install --cask visual-studio-code
   brew install --cask hyper
   brew install --cask caffeine
-  brew install --cask telegram
   brew install --cask 1password
 
   # Install GnuPG to enable PGP-signing commits.
