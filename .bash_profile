@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 eval "$(starship init bash)"
 
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -94,5 +96,7 @@ if which brew &> /dev/null; then
 	fi
 fi
 
-source "$HOME/.cargo/env"
+if [ -r "$HOME/.cargo/env" ]; then
+	source "$HOME/.cargo/env"
+fi
 
