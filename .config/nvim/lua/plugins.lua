@@ -24,28 +24,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'simrat39/rust-tools.nvim',
-    requires = {
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim'
-    },
-    after = {
-      'nvim-lspconfig',
-      'telescope.nvim'
-    },
-    config = function()
-      require('rust-tools').setup()
-      -- 300ms of no cursor movements to trigger CursorHold
-      vim.opt.updatetime = 300
-      vim.opt.signcolumn = 'yes'
-      -- deprecated, find replacement
-      -- vim.cmd("autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })")
-      vim.cmd("autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)")
-    end
-  }
-
-  use {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup()
@@ -57,10 +35,11 @@ return require('packer').startup(function(use)
     requires = {
       'neovim/nvim-lspconfig',
       'windwp/nvim-autopairs',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp'
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help'
     },
     after = {
       'nvim-lspconfig',
@@ -77,15 +56,19 @@ return require('packer').startup(function(use)
       local cmp = require('cmp')
       cmp.setup({
           mapping = {
-              ['<Tab>'] = cmp.mapping.select_next_item(),
-              ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-              ['<CR>'] = cmp.mapping.confirm({
+              -- ['<Tab>'] = cmp.mapping.select_next_item(),
+              -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+              ['<Tab>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true,
               })
           },
           sources = cmp.config.sources({
               { name = 'nvim_lsp' },
+              { name = 'nvim_lsp_signature_help' },
+              { name = 'nvim_lua' }
+          }, {
+              { name = 'buffer', keyword_length = 3 }
           }),
       })
 
@@ -94,6 +77,40 @@ return require('packer').startup(function(use)
 
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+    end
+  }
+
+  use {
+    'simrat39/rust-tools.nvim',
+    requires = {
+      'neovim/nvim-lspconfig',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim'
+    },
+    after = {
+      'nvim-lspconfig',
+      'telescope.nvim',
+      'nvim-cmp'
+    },
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local lsp_attach = function(client, buf)
+        vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+        vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.api.nvim_buf_set_option(buf, "tagfunc", "v:lua.vim.lsp.tagfunc")
+      end
+
+      require('rust-tools').setup({
+        capabilities = capabilities,
+        on_attach = lsp_attach
+      })
+
+      -- 300ms of no cursor movements to trigger CursorHold
+      vim.opt.updatetime = 300
+      vim.opt.signcolumn = 'yes'
+      -- deprecated, find replacement
+      -- vim.cmd("autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })")
+      vim.cmd("autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)")
     end
   }
 
