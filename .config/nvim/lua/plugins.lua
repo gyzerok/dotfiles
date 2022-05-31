@@ -39,7 +39,10 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help'
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/cmp-vsnip'
+
     },
     after = {
       'nvim-lspconfig',
@@ -55,20 +58,22 @@ return require('packer').startup(function(use)
 
       local cmp = require('cmp')
       cmp.setup({
-          mapping = {
-              -- ['<Tab>'] = cmp.mapping.select_next_item(),
-              -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-              ['<Tab>'] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
-              })
+          snippet = {
+            expand = function(args)
+              vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            end,
           },
+          mapping = cmp.mapping.preset.insert({
+              ['<Down>'] = cmp.mapping.select_next_item(),
+              ['<Up>'] = cmp.mapping.select_prev_item(),
+              ['<Tab>'] = cmp.mapping.confirm({ select = true })
+          }),
           sources = cmp.config.sources({
               { name = 'nvim_lsp' },
               { name = 'nvim_lsp_signature_help' },
               { name = 'nvim_lua' }
           }, {
-              { name = 'buffer', keyword_length = 3 }
+              { name = 'buffer', keyword_length = 3 },
           }),
       })
 

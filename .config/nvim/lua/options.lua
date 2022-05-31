@@ -20,7 +20,7 @@ vim.opt.tabstop = 4
 vim.opt.smartindent = true
 
 -- set system clipboard as default
-vim.opt.clipboard = unnamedplus
+vim.opt.clipboard = "unnamedplus"
 
 -- start scrolling three lines before the horizontal window border
 vim.opt.scrolloff = 3
