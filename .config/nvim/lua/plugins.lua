@@ -24,17 +24,9 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup()
-    end
-  }
-
-  use {
     'hrsh7th/nvim-cmp',
     requires = {
       'neovim/nvim-lspconfig',
-      'windwp/nvim-autopairs',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
@@ -46,7 +38,6 @@ return require('packer').startup(function(use)
     },
     after = {
       'nvim-lspconfig',
-      'nvim-autopairs'
     },
     config = function()
       -- menuone: popup even when there is only one match
@@ -79,9 +70,6 @@ return require('packer').startup(function(use)
 
       -- local capabilities = vim.lsp.protocol.make_client_capabilities()
       -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
     end
   }
 
