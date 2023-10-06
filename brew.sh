@@ -38,6 +38,7 @@ brew install wget
 brew install nvm
 brew install git
 brew install git-lfs
+brew install scc
 
 # Install nice prompt
 brew install starship
@@ -52,7 +53,6 @@ if [ "$(uname)" == "Darwin" ]; then
   brew tap homebrew/cask-versions
   brew install --cask firefox
   brew install --cask visual-studio-code
-  brew install --cask hyper
   brew install --cask caffeine
   brew install --cask 1password
 
