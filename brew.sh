@@ -55,6 +55,8 @@ if [ "$(uname)" == "Darwin" ]; then
   brew install --cask visual-studio-code
   brew install --cask caffeine
   brew install --cask 1password
+  brew install --cask monitorcontrol
+  brew install --cask iina
 
   # Install GnuPG to enable PGP-signing commits.
   # Doing it last as it might require sudo password.
