@@ -44,16 +44,16 @@ brew install scc
 brew install starship
 
 # Insall NeoVim and related things
-brew install neovim
-brew install ripgrep
-brew install fd
+# brew install neovim
+# brew install ripgrep
+# brew install fd
 
 # Install apps only for macOS as I don't need them on Linux VMs.
 if [ "$(uname)" == "Darwin" ]; then
   brew tap homebrew/cask-versions
   brew install --cask firefox
   brew install --cask visual-studio-code
-  brew install --cask caffeine
+  brew install --cask keepingyouawake
   brew install --cask 1password
   brew install --cask monitorcontrol
   brew install --cask iina
