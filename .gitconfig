@@ -125,3 +125,6 @@
 
 [status]
         showUntrackedFiles = all
+
+[rerere]
+	enabled = true
