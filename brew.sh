@@ -51,11 +51,11 @@ brew install starship
 brew install --cask firefox
 brew install --cask visual-studio-code
 brew install --cask keepingyouawake
-# brew install --cask monitorcontrol
 brew install --cask betterdisplay
 brew install --cask iina
 brew install --cask wezterm
 brew install --cask docker
+brew install --cask raycast
 
 # Add fonts tap
 brew tap homebrew/cask-fonts
