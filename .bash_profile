@@ -91,11 +91,11 @@ if which brew &> /dev/null; then
 	fi
 fi
 
-if [ -r "$HOME/.cargo/env" ]; then
-	source "$HOME/.cargo/env"
-fi
-
 # * ~/.bash_extra can be used for other settings you don’t want to commit.
 if [ -f "$HOME/.bash_extra" ]; then
 	source "$HOME/.bash_extra";
+fi
+
+if [ -r "$HOME/.cargo/env" ]; then
+	source "$HOME/.cargo/env"
 fi
