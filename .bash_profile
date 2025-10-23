@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
 eval "$(starship init bash)"
-
-# * ~/.extra can be used for other settings you don’t want to commit.
-if [ -f ~/.extra ]; then
-	source ~/.extra;
-fi
 
 ###############################################################################
 # Aliases                                                                     #
@@ -101,3 +95,7 @@ if [ -r "$HOME/.cargo/env" ]; then
 	source "$HOME/.cargo/env"
 fi
 
+# * ~/.bash_extra can be used for other settings you don’t want to commit.
+if [ -f "$HOME/.bash_extra" ]; then
+	source "$HOME/.bash_extra";
+fi

@@ -13,17 +13,33 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-ln -s "$(brew --prefix)/bin/gsha256sum" "$(brew --prefix)/bin/sha256sum"
+bins=(
+  # Install a modern version of Bash.
+  bash
+  bash-completion@2
 
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
+  coreutils
+  findutils
 
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion@2
+  git
+  git-lfs
+
+  # LazyVim requirements
+  neovim
+  fd
+  fzf
+  ripgrep
+  lazygit
+
+  # Other useful staff
+  starship
+  wget
+  telnet
+  nvm
+  scc
+)
+
+brew install "${bins[@]}"
 
 # Switch to using brew-installed bash as default shell
 if ! grep -Fq "$(brew --prefix)/bin/bash" /etc/shells; then
@@ -31,41 +47,23 @@ if ! grep -Fq "$(brew --prefix)/bin/bash" /etc/shells; then
   chsh -s "$(brew --prefix)/bin/bash";
 fi;
 
-# Install other useful binaries.
-brew install wget
-brew install telnet
-brew install nvm
-brew install git
-brew install git-lfs
-brew install scc
-brew install yt-dlp
+# Use sha256 from coreutils
+ln -s "$(brew --prefix)/bin/gsha256sum" "$(brew --prefix)/bin/sha256sum"
 
-# Install nice prompt
-brew install starship
+casks=(
+  firefox
+  ghostty
+  visual-studio-code
+  docker
+  raycast
+  betterdisplay
+  keepingyouawake
+  iina
+  font-fira-code
+  font-fira-code-nerd-font
+)
 
-# Insall NeoVim and related things
-# brew install neovim
-# brew install ripgrep
-# brew install fd
-
-brew install --cask firefox
-brew install --cask visual-studio-code
-brew install --cask keepingyouawake
-brew install --cask betterdisplay
-brew install --cask iina
-brew install --cask wezterm
-brew install --cask docker
-brew install --cask raycast
-
-# Add fonts tap
-brew tap homebrew/cask-fonts
-# Install Fira Code
-brew install --cask font-fira-code
-brew install --cask font-fira-code-nerd-font
-
-# Install GnuPG to enable PGP-signing commits.
-# Doing it last as it might require sudo password.
-brew install --cask gpg-suite-no-mail
+brew install --cask "${casks[@]}"
 
 # Remove outdated versions from the cellar.
 brew cleanup
