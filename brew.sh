@@ -59,6 +59,7 @@ casks=(
   betterdisplay
   keepingyouawake
   iina
+  superwhisper
   font-fira-code
   font-fira-code-nerd-font
 )
