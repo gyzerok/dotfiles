@@ -7,8 +7,9 @@ config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
+# Can use order=above for better visuals, but it cause flicker in Firefox.
 after-startup-command = [
-  'exec-and-forget borders hidpi=on active_color=0xffffd230 width=4.0'
+  'exec-and-forget borders hidpi=on active_color=0xffffd230 width=3.0'
 ]
 
 # Start AeroSpace at login
@@ -123,6 +124,14 @@ on-mode-changed = []
     ctrl-alt-cmd-shift-up = 'focus up'
     ctrl-alt-cmd-shift-right = 'focus right'
 
+    # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
+    # ctrl-alt-cmd-shift-enter = '''exec-and-forget osascript -e '
+    # tell application "Terminal"
+    #     do script
+    #     activate
+    # end tell'
+    # '''
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-left = 'move left'
     alt-shift-down = 'move down'
@@ -164,3 +173,9 @@ on-mode-changed = []
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
+
+# Fix for Ghostty tabs breaking tiling
+# https://ghostty.org/docs/help/macos-tiling-wms#aerospace
+# [[on-window-detected]]
+#     if.app-id="com.mitchellh.ghostty"
+#     run = ["layout tiling"]
