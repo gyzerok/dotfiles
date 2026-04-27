@@ -59,7 +59,7 @@ on-mode-changed = []
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
-    preset = 'qwerty'
+    preset = 'dvorak'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -117,12 +117,19 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
+    ctrl-alt-cmd-shift-t = 'layout tiles horizontal vertical'
+    ctrl-alt-cmd-shift-s = 'layout accordion horizontal vertical'
+
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     ctrl-alt-cmd-shift-left = 'focus left'
+    ctrl-alt-cmd-shift-h = 'focus left'
     ctrl-alt-cmd-shift-down = 'focus down'
+    ctrl-alt-cmd-shift-j = 'focus down'
     ctrl-alt-cmd-shift-up = 'focus up'
+    ctrl-alt-cmd-shift-k = 'focus up'
     ctrl-alt-cmd-shift-right = 'focus right'
+    ctrl-alt-cmd-shift-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
     # ctrl-alt-cmd-shift-enter = '''exec-and-forget osascript -e '
