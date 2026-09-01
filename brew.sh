@@ -22,7 +22,6 @@ bins=(
   findutils
 
   git
-  git-lfs
 
   # nvim
   neovim
@@ -31,13 +30,15 @@ bins=(
   ripgrep
   lazygit
 
+  # aerospace
+  FelixKratz/formulae/borders
+
   # other useful stuff
   starship
   wget
   telnet
   nvm
   scc
-  FelixKratz/formulae/borders
 )
 
 brew install "${bins[@]}"
